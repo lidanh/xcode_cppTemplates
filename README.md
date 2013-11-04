@@ -1,5 +1,10 @@
 # Xcode C++ Templates
 
+While working on personal projects and university assignments I found myself constantly doing the same steps over and over again whenever I would create a new project. 
+So I decided to jump into unknown world that is "Xcode Project Template documentation" and figure out how to create my own project template.
+
+Most of what I learned was by looking at Apple's own templates (which are located in /Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/), and several github Xcode templates projects.
+
 #### Project Templates
 Creating src-include-bin project structure, with the same folders in the filesystem.
 Build projects with fully-customized makefile.
