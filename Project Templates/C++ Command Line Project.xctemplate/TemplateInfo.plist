@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Kind</key>
+		<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+		<key>Identifier</key>
+		<string>com.apple.dt.unit.spl</string>
+		<key>Ancestors</key>
+		<array>
+			<string>com.apple.dt.unit.base</string>
+			<string>com.apple.dt.unit.macBase</string>
+		</array>
+		<key>Concrete</key>
+		<true/>
+		<key>Description</key>
+		<string>This template builds a new C++ project with src-include-bin structure, build using makefile.</string>
+		<key>Options</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>buildToolPath</string>
+				<key>Required</key>
+				<true/>
+				<key>Name</key>
+				<string>Build Tool</string>
+				<key>Description</key>
+				<string>The path to the build tool to use</string>
+				<key>Type</key>
+				<string>text</string>
+				<key>Default</key>
+				<string>/usr/bin/make</string>
+			</dict>
+		</array>
+		<key>Targets</key>
+		<array>
+			<dict>
+				<key>TargetType</key>
+				<string>Legacy</string>
+				<key>BuildToolPath</key>
+				<string>___VARIABLE_buildToolPath___</string>
+				<key>BuildToolArgsString</key>
+				<string>$(ACTION)</string>
+				<key>SharedSettings</key>
+				<dict>
+					<key>OTHER_CFLAGS</key>
+					<string></string>
+					<key>OTHER_LDFLAGS</key>
+					<string></string>
+				</dict>
+				<key>Configurations</key>
+				<dict>
+					<key>Debug</key>
+					<dict>
+						<key>DEBUGGING_SYMBOLS</key>
+						<string>YES</string>
+						<key>GCC_GENERATE_DEBUGGING_SYMBOLS</key>
+						<string>YES</string>
+						<key>GCC_OPTIMIZATION_LEVEL</key>
+						<string>0</string>
+					</dict>
+					<key>Release</key>
+					<dict/>
+				</dict>
+			</dict>
+		</array>
+		<key>Definitions</key>
+		<dict>
+			<key>src</key>
+			<dict>
+				<key>Path</key>
+				<string>src</string>
+			</dict>
+			<key>bin</key>
+			<dict>
+				<key>Path</key>
+				<string>bin</string>
+			</dict>
+			<key>include</key>
+			<dict>
+				<key>Path</key>
+				<string>include</string>
+			</dict>
+			<key>.gitignore</key>
+			<dict>
+				<key>Path</key>
+				<string>.gitignore</string>
+			</dict>
+			<key>../makefile</key>
+			<string># This makefile is only for Xcode build system
+PROJDIR = ___PACKAGENAMEASIDENTIFIER___
+MAKE = ___VARIABLE_buildToolPath___
+
+all:
+	@echo 'Calling main makefile'
+	cd $(PROJDIR) &amp;&amp; $(MAKE) all
+
+clean:
+	cd $(PROJDIR) &amp;&amp; $(MAKE) clean</string>
+			<key>Makefile</key>
+			<string>###################################################################################################################
+#
+#        Dynamic makefile, by Ken Saggy and Lidan Hifi
+#        Will automatically search for files ending with SRCEXT (source extension) in SRCDIR (source directory)
+#
+#        MAKE FILE DOCUMENTATION:
+#        ========================
+#        CC         = C Compiler [g++]
+#        CFLAGS     = Flags used during compilation
+#        SRCDIR     = Source Directory [src]
+#        BUILDDIR   = Where the object files will be placed [bin]
+#        TARGET     = Name of the final target executable
+#        SRCEXT     = File extension to look for of source code files [.cpp]
+#        OBJECTS    = Objects files (searched for in BUILDDIR)
+#        INC        = Flags used to include "include" directory duing compilation
+#        LFLAGS     = Flags used for linkning
+#
+####################################################################################################################
+
+CC := g++
+SRCDIR := src
+BUILDDIR := bin
+TARGET := bin/___PACKAGENAMEASIDENTIFIER___
+APP := ___PACKAGENAMEASIDENTIFIER___
+
+SRCEXT := cpp
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CFLAGS := -g -Wall -Weffc++
+LFLAGS := -L/usr/lib
+INC := -Linclude
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	@echo "Building target: $(TARGET)"
+	@echo " Linking..."
+	@echo " $(CC) $^ -o $(TARGET) $(LFLAGS)"; $(CC) $^ -o $(TARGET) $(LFLAGS)
+	@echo "Finished building target: $(TARGET)"
+
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(BUILDDIR)
+	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $&lt;"; $(CC) $(CFLAGS) $(INC) -c -o $@ $&lt;
+
+clean:
+	@echo " Cleaning...";
+	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR)/* $(TARGET)
+
+# Tests
+#tester:
+#  $(CC) $(CFLAGS) test/tester.cpp $(INC) $(LFLAGS) -o bin/tester</string>
+			<key>src/main.cpp</key>
+			<dict>
+				<key>Group</key>
+        <string>src</string>
+			</dict>
+			<key>src/main.cpp:include</key>
+						<string>#include &lt;iostream&gt;
+</string>
+						<key>src/main.cpp:main:content</key>
+						<string>// insert code here...
+std::cout &lt;&lt; &quot;Hello, World!\n&quot;;
+</string>
+			<key>src/main.cpp:main</key>
+			<dict>
+			<key>Beginning</key>
+			<string>int main(int argc, const char * argv[])
+{
+</string>
+			<key>End</key>
+			<string>    return 0;
+}
+</string>
+			<key>Indent</key>
+			<integer>1</integer>
+		</dict>
+		</dict>
+		<key>Nodes</key>
+		<array>
+			<string>Makefile</string>
+			<string>../makefile</string>
+			<string>bin</string>
+			<string>include</string>
+			<string>src</string>
+			<string>src/main.cpp:comments</string>
+			<string>src/main.cpp:include</string>
+			<string>src/main.cpp:main:content</string>
+			<string>.gitignore</string>
+		</array>
+	</dict>
+</plist>
