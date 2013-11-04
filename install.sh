@@ -32,9 +32,11 @@ fi
 
 # Copy all of the xctemplate folders
 # project templates
+echo "\r\033[2K  [ \033[00;32mOK\033[0m ] Copying project templates"
 cp -r $installFolder/Project\ Templates/*.xctemplate "$projectTemplatesFolder"
 
 # file templates
+echo "\r\033[2K  [ \033[00;32mOK\033[0m ] Copying file templates"
 cp -r $installFolder/File\ Templates/*.xctemplate "$fileTemplatesFolder"
 
 # Create empty directories that the project templates will copy.
@@ -43,5 +45,5 @@ mkdir -p "$projectTemplatesFolder"/"C++ Command Line Project.xctemplate/src/"
 mkdir -p "$projectTemplatesFolder"/"C++ Command Line Project.xctemplate/include/"
 
 rm -r $installFolder
-echo "\r\033[2K  [ \033[00;32mOK\033[0m ] Deleting installation Folder $installFolder.\n"
+echo "\r\033[2K  [ \033[00;32mOK\033[0m ] Deleting installation folder $installFolder.\n"
 echo "\r\033[2K  [ \033[00;32mOK\033[0m ] C++ Xcode Templates installed successfuly.\n"
