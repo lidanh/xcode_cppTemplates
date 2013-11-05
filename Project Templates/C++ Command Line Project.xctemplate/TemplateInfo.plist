@@ -81,12 +81,12 @@
 				<key>Path</key>
 				<string>include</string>
 			</dict>
-			<key>.gitignore</key>
+      <key>../.gitignore</key>
 			<dict>
 				<key>Path</key>
-				<string>.gitignore</string>
+        <string>.gitignore</string>
 			</dict>
-			<key>../makefile</key>
+			<key>../Makefile</key>
 			<string># This makefile is only for Xcode build system
 PROJDIR = ___PACKAGENAMEASIDENTIFIER___
 MAKE = ___VARIABLE_buildToolPath___
@@ -97,7 +97,7 @@ all:
 
 clean:
 	cd $(PROJDIR) &amp;&amp; $(MAKE) clean</string>
-			<key>Makefile</key>
+			<key>makefile</key>
 			<string>###################################################################################################################
 #
 #        Dynamic makefile, by Ken Saggy and Lidan Hifi
@@ -177,15 +177,15 @@ std::cout &lt;&lt; &quot;Hello, World!\n&quot;;
 		</dict>
 		<key>Nodes</key>
 		<array>
-			<string>Makefile</string>
-			<string>../makefile</string>
+			<string>makefile</string>
+			<string>../Makefile</string>
 			<string>bin</string>
 			<string>include</string>
 			<string>src</string>
 			<string>src/main.cpp:comments</string>
 			<string>src/main.cpp:include</string>
 			<string>src/main.cpp:main:content</string>
-			<string>.gitignore</string>
+      <string>../.gitignore</string>
 		</array>
 	</dict>
 </plist>
