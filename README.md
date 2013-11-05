@@ -30,6 +30,9 @@ wget --no-check-certificate https://raw.github.com/lidanh/xcode_cppTemplates/mas
 # Create Projects
 ![create project](https://dl.dropboxusercontent.com/u/4041100/github/xcodecreateproject.png)
 
+# Create Files (Without auto-creating header file)
+![create file](https://dl.dropboxusercontent.com/u/4041100/github/filetemplate.png)
+
 # Build Projects
 To build, press **⌘B**.
 
