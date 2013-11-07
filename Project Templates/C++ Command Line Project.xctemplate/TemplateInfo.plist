@@ -189,7 +189,7 @@ std::cout &lt;&lt; &quot;Hello, World!\n&quot;;
 			<key>src/main.cpp:main</key>
 			<dict>
 			<key>Beginning</key>
-			<string>int main(int argc, const char * argv[])
+			<string>int main(int argc, const char* argv[])
 {
 </string>
 			<key>End</key>
